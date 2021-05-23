@@ -1,26 +1,19 @@
 import React, {useState} from 'react';
+import Input from '../src/features/Input'
 import './App.css';
-import {searchQuery} from '../src/features/Search'
+
+
 
 
 function App() {
+  const [searchData, setSearchData] = useState('')
 
-  const [text, setText] = useState('')
-  console.log(text)
+
   return (
     <div className="App">
      <h1>Hacker News Algolia API</h1>
-     <form onSubmit={searchQuery(text)}>
-     <input
-     type='text'
-     value={text}
-     onChange={(e) => setText(e.target.value)}
-     />
-     <input
-     value="submit"
-     type="submit"
-     />
-     </form>
+     <Input/>
+     <p>{searchData}</p>
     </div>
   );
 }
