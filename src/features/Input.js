@@ -33,7 +33,7 @@ const Input = () => {
      type='submit'/>
      </form>
      <div>
-     {searchData ? searchData.map(results => <p>{results.title}</p>) : null}
+     {searchData ? searchData.map((results, i) => <p>{i + 1}: {results.title}</p>) : null}
      </div>
     </div>
     
