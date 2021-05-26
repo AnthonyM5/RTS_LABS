@@ -37,7 +37,9 @@ const Input = (props) => {
      type='submit'/>
      </form>
      <div>
-     {searchData ? searchData.map((results, i) => <p key={results.objectID}><a href={results.url}>{results.title}</a> By: {results.author}</p>) : "No Results"}
+    <ol>
+     {searchData ? searchData.map((results, i) => <li key={results.objectID}><a href={results.url}>{results.objectID}: {results.title}</a> By: {results.author}</li>) : "No Results"}
+     </ol>
      </div>
     </div>
     
