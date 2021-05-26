@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import {store} from '../app/store'
+import { connect } from 'react-redux'
 
 
-const Input = () => {
+
+const Input = (props) => {
     const [text, setText] = useState('')
     const [searchData, setSearchData] = useState()
 
@@ -19,9 +20,8 @@ const Input = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         searchQuery(text)
-        store.dispatch({type: 'ADD_SEARCH', payload: text})
+        props.dispatch({type: 'ADD_SEARCH', payload: text})
     }
-
 
     
     return (
@@ -37,11 +37,14 @@ const Input = () => {
      type='submit'/>
      </form>
      <div>
-     {searchData ? searchData.map((results, i) => <p key={i + 1}>{results.title}</p>) : null}
+     {searchData ? searchData.map((results, i) => <p key={results.objectID}><a href={results.url}>{results.title}</a> By: {results.author}</p>) : "No Results"}
      </div>
     </div>
     
     )
 }
 
-export default Input
+const mapStateToProps = (state) => ({...state.searchTerms
+})
+
+export default connect(mapStateToProps)(Input)
