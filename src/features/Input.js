@@ -38,7 +38,7 @@ const Input = (props) => {
      </form>
      <div>
     <ol>
-     {searchData ? searchData.map((results, i) => <li key={results.objectID}><a href={results.url}>{results.objectID}: {results.title}</a> By: {results.author}</li>) : "No Results"}
+     {searchData ? searchData.map((results) => <li key={results.objectID}><a href={results.url}>{results.objectID}: {results.title}</a> By: {results.author}</li>) : "No Results"}
      </ol>
      </div>
     </div>
