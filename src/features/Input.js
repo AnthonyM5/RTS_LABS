@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {store} from '../app/store'
 
 
 const Input = () => {
@@ -18,7 +19,10 @@ const Input = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         searchQuery(text)
+        store.dispatch({type: 'ADD_SEARCH', payload: text})
     }
+
+
     
     return (
     <div>
@@ -33,7 +37,7 @@ const Input = () => {
      type='submit'/>
      </form>
      <div>
-     {searchData ? searchData.map((results, i) => <p>{i + 1}: {results.title}</p>) : null}
+     {searchData ? searchData.map((results, i) => <p key={i + 1}>{results.title}</p>) : null}
      </div>
     </div>
     
